@@ -2,5 +2,5 @@
 
 <!--executed only if 'message' have data.-->
 <ul *ngIf="message">
-    <p>id is {{message.id}} and content is {{message.content}}</p>
+    <p *ngIf="message.id && message.content">id is {{message.id}} and content is {{message.content}}</p>
 </ul>

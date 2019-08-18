@@ -8,7 +8,7 @@ import { HelloworldService } from '../helloworld/helloworld.service';
 })
 export class HomeComponent implements OnInit {
 
-  message: Object;
+  message: MessageModel;
 
   constructor(private data: HelloworldService) { }
 
@@ -18,4 +18,13 @@ export class HomeComponent implements OnInit {
     })
   }
 
+}
+
+export class MessageModel {
+    id: number;
+    content: string;
+    constructor(private _id: number, public message: string) {
+        this.id = _id;
+        this.content = message;
+    }
 }
