@@ -23,6 +23,9 @@
     "@angular/cli": "^8.2.2",
     "@angular/compiler-cli": "~8.2.0",
     "typescript": "~3.5.3",
+    "express":"*",
+    "body-parser":"*",
+    "bcrypt": "^0.8.5",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
