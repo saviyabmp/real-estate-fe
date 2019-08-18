@@ -10,7 +10,9 @@ export class HelloworldService {
 
   getJSONResponse() {
       //http://localhost:3000/greeting
-    var response = this.http.get('https://dahamv.free.beeceptor.com/my/api/path');
+      //https://www.mocky.io/v2/5d57b98f2f0000d40c54548d
+      //https://saviya.herokuapp.com/greeting
+    var response = this.http.get('https://saviya.herokuapp.com/greeting');
     //console.log(response);
     return response;
   }
