@@ -9,15 +9,19 @@ import { HelloworldService } from '../helloworld/helloworld.service';
 export class HomeComponent implements OnInit {
 
   message: MessageModel;
+  name: String = "";
 
   constructor(private data: HelloworldService) { }
 
-  ngOnInit() {
-    this.data.getJSONResponse().subscribe(data => {
-      this.message = data;
-    })
+  ngOnInit() {}
+
+  onInput(event: any) {
+    this.name =  event.target.value;
   }
 
+  onClick(){
+    this.data.getJSONResponse(this.name).subscribe(data => {this.message = data;});
+  }
 }
 
 export class MessageModel {
