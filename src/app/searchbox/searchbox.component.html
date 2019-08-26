@@ -1,0 +1,74 @@
+
+<div class="searchbox">
+    <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#sales" aria-controls="sales" role="tab" data-toggle="tab">Sales</a></li>
+    <li role="presentation"><a href="#rentals" aria-controls="rentals" role="tab" data-toggle="tab">Rentals</a></li>
+    <li role="presentation"><a href="#land" aria-controls="land" role="tab" data-toggle="tab">Land</a></li>
+    <li id="new-development" role="presentation"><a href="#newdev" aria-controls="newdev" role="tab" data-toggle="tab">New Developments</a></li>
+    </ul>
+
+
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="sales">
+            <form name="searchForm" id="searchForm" action="sale/index.php" onsubmit="return validateSearchData(event, this);">
+            <!--BUY-->
+                <div class="input-group">
+                    <input type="text" class="form-control" id="searchbox" name="searchbox" autocomplete="off" placeholder="Type a city name" value="">
+                    <span id="display_container"><!-- span needed to negate the effect of input-group -->
+                    <div id="display"><!-- place where dynamic suggestion list will appear --></div>
+                    </span>
+                    <div class="input-group-btn search-panel">
+                        <button type="button" class="btn btn-fields dropdown-toggle animate-off" data-toggle="dropdown">
+                            <span id="search_concept">Search Radius</span>
+                            <i class="fa fa-angle-down"></i>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" id="search_radius">
+                            <li><a href="#0">Only this city</a></li>
+                            <li><a href="#1">+ 1 km radius</a></li>
+                            <li><a href="#2">+ 2 km radius</a></li>
+                        </ul>
+                </div>
+                <!--drop 2-->
+                <div id="property-type" class="input-group-btn search-panel">
+                    <button type="button" class="btn btn-fields dropdown-toggle animate-off" data-toggle="dropdown">
+                        <span id="search_concept">Property Type</span>
+                        <i class="fa fa-angle-down"></i>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" id="prop_type">
+                        <li><label class="checkbox"><input type="checkbox" value="House">Houses</label></li>
+                        <li><label class="checkbox"><input type="checkbox" value="Apartment">Apartments</label></li>
+                    </ul>
+                </div>
+                <!--drop 3-->
+                <div class="input-group-btn search-panel">
+                    <button type="button" class="btn btn-fields dropdown-toggle animate-off" data-toggle="dropdown">
+                        <span id="search_concept">Max Price</span>
+                        <i class="fa fa-angle-down"></i>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" id="max_price">
+                        <li><a href="#0">Any</a></li>
+                        <li><a href="#1000000">1 mn (10 lakhs)</a></li>
+                        <li><a href="#5000000000">5 bn (50000 lakhs) </a></li>
+                    </ul>
+                </div>
+                <!--search btn-->
+                <span class="input-group-btn">
+                    <button class="btn btn-info animate-off" type="submit" id="searchBtn" onclick="ga('send', 'event', 'Outbound - Home Search', 'click', 'Sales', { nonInteraction: true });">
+                        &nbsp;&nbsp;Search&nbsp;&nbsp;
+                    </button>
+                </span>
+                </div>
+                <input name="location" id="location" type="hidden" value="-">
+                <input name="region_inc" type="hidden" value="1" disabled="">
+                <input name="list_first" id="list_first" type="hidden" value="" disabled="">
+                <input name="max" id="max" type="hidden" value="">
+                <input name="search_area" id="search_area" type="hidden" value="">
+                <input name="type" id="type" type="hidden" value="">
+                <input name="search" type="hidden" id="search" value="1">
+            </form>
+        </div>
+    <!--end search tabs-->
+    </div>
+</div>

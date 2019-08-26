@@ -1,3 +1,4 @@
 npm install -g @angular/cli
+npm install bootstrap jquery popper
 
 ng serve --disableHostCheck true
