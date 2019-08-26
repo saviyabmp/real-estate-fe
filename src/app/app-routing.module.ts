@@ -6,6 +6,7 @@ import { GreetingComponent } from './greeting/greeting.component';
 
 
 const routes: Routes = [
+   {path:  "", pathMatch:  "full",redirectTo:  "home"},
    { path: 'greeting', component: GreetingComponent },
    { path: 'home', component: HomeComponent },
    { path: 'search', component: SearchboxComponent },
