@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { SearchboxComponent } from './searchbox/searchbox.component';
 import { GreetingComponent } from './greeting/greeting.component';
+import { InboxComponent } from './inbox/inbox.component';
 
 
 const routes: Routes = [
@@ -10,6 +11,7 @@ const routes: Routes = [
    { path: 'greeting', component: GreetingComponent },
    { path: 'home', component: HomeComponent },
    { path: 'search', component: SearchboxComponent },
+   { path: 'inbox', component: InboxComponent }
 ];
 
 @NgModule({

@@ -2,4 +2,6 @@ npm install -g @angular/cli
 npm install bootstrap jquery popper.js
 npm install --save @ng-bootstrap/ng-bootstrap
 
+npm install matrix-js-sdk
+
 ng serve --disableHostCheck true
