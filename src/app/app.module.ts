@@ -6,13 +6,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { SearchboxComponent } from './searchbox/searchbox.component';
-import { GreetingComponent } from './greeting/greeting.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { NavigationComponent } from './navigation/navigation.component';
-import { InboxComponent } from './inbox/inbox.component';
+import { HomeComponent } from './pages/home/home.component';
+import { SearchboxComponent } from './common/searchbox/searchbox.component';
+import { GreetingComponent } from './testing/greeting/greeting.component';
+import { HeaderComponent } from './common/header/header.component';
+import { FooterComponent } from './common/footer/footer.component';
+import { NavigationComponent } from './common/navigation/navigation.component';
+import { InboxComponent } from './pages/inbox/inbox.component';
 
 @NgModule({
   declarations: [
