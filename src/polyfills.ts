@@ -61,3 +61,8 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
+/*
+This solution was in https://stackoverflow.com/questions/54349858/angular-7-uncaught-referenceerror-global-is-not-defined-when-adding-package
+otherwise using 'matrix-js-sdk' causes "Uncaught ReferenceError: global is not defined" error
+*/
+ (window as any)['global'] = window;

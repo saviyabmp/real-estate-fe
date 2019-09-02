@@ -1,17 +1,20 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { SearchboxComponent } from './searchbox/searchbox.component';
-import { GreetingComponent } from './greeting/greeting.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { NavigationComponent } from './navigation/navigation.component';
+import { HomeComponent } from './pages/home/home.component';
+import { SearchboxComponent } from './common/searchbox/searchbox.component';
+import { GreetingComponent } from './testing/greeting/greeting.component';
+import { HeaderComponent } from './common/header/header.component';
+import { FooterComponent } from './common/footer/footer.component';
+import { NavigationComponent } from './common/navigation/navigation.component';
+import { InboxComponent } from './pages/inbox/inbox.component';
+import { LandBuyerComponent } from './pages/land/land-buyer/land-buyer.component';
+import { LandSellerComponent } from './pages/land/land-seller/land-seller.component';
 
 @NgModule({
   declarations: [
@@ -21,12 +24,16 @@ import { NavigationComponent } from './navigation/navigation.component';
     GreetingComponent,
     HeaderComponent,
     FooterComponent,
-    NavigationComponent
+    NavigationComponent,
+    InboxComponent,
+    LandBuyerComponent,
+    LandSellerComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     FormsModule,
     NgbModule
   ],
