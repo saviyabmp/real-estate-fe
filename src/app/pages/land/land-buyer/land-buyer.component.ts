@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LandAdService, LandAdModel } from '../land_ad_service/land-ad.service';
 
 @Component({
   selector: 'app-land-buyer',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandBuyerComponent implements OnInit {
 
-  constructor() { }
+  ads: LandAdModel[];
+  constructor(private adService: LandAdService) {
+      this.ads = adService.getAll();
+   }
 
   ngOnInit() {
   }

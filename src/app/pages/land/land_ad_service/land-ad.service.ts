@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
+
 export class LandAdService {
 
   private store: AdStore = new AdStore();
@@ -44,37 +45,37 @@ export class AdStore {
       this.ads = [
           {
             id: 0,
-            imageUrl: "",
+            imageUrl: "./assets/img/lotus.jpg",
             price: 10000,
             description: "",
             location: "",
           }, {
             id: 1,
-            imageUrl: "",
+            imageUrl: "./assets/img/lotus.jpg",
             price: 12000,
             description: "",
             location: "",
           }, {
             id: 2,
-            imageUrl: "",
+            imageUrl: "./assets/img/lotus.jpg",
             price: 15500,
             description: "",
             location: "",
           }, {
             id: 3,
-            imageUrl: "",
+            imageUrl: "./assets/img/lotus.jpg",
             price: 19000,
             description: "",
             location: "",
           }, {
             id: 4,
-            imageUrl: "",
+            imageUrl: "./assets/img/lotus.jpg",
             price: 20000,
             description: "",
             location: "",
           }, {
             id: 5,
-            imageUrl: "",
+            imageUrl: "./assets/img/lotus.jpg",
             price: 25000,
             description: "",
             location: "",
