@@ -13,6 +13,8 @@ import { HeaderComponent } from './common/header/header.component';
 import { FooterComponent } from './common/footer/footer.component';
 import { NavigationComponent } from './common/navigation/navigation.component';
 import { InboxComponent } from './pages/inbox/inbox.component';
+import { LandBuyerComponent } from './pages/land/land-buyer/land-buyer.component';
+import { LandSellerComponent } from './pages/land/land-seller/land-seller.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { InboxComponent } from './pages/inbox/inbox.component';
     HeaderComponent,
     FooterComponent,
     NavigationComponent,
-    InboxComponent
+    InboxComponent,
+    LandBuyerComponent,
+    LandSellerComponent
   ],
   imports: [
     BrowserModule,
