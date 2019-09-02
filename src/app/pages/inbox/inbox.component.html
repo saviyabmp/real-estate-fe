@@ -17,7 +17,7 @@
   </table>
   </div>
 
-<form (ngSubmit)="sendMessage(messageForm.value)" [formGroup]="messageForm">
+<form (ngSubmit)="sendMessage()" [formGroup]="messageForm">
     <input type="text" class="form-control" formControlName="message">
     <br/>
     <button class="btn btn-primary btn-white" type="submit" [disabled]="messageForm.invalid">Send</button>
