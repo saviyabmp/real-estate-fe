@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import sdk from 'matrix-js-sdk';
 
 @Component({
@@ -11,12 +12,17 @@ export class InboxComponent implements OnInit {
   client ;
   serverState;
   messages = new Array<{name, message}>();
-  message : String;
+  messageForm: FormGroup;
   homeServerUrl = "https://matrix.org";
   testRoomId = "!LTLLFEhlQYgRvlQvjv:matrix.org";
   thisUser = "@dahamv:matrix.org";
   accessToken = "MDAxOGxvY2F0aW9uIG1hdHJpeC5vcmcKMDAxM2lkZW50aWZpZXIga2V5CjAwMTBjaWQgZ2VuID0gMQowMDI1Y2lkIHVzZXJfaWQgPSBAZGFoYW12Om1hdHJpeC5vcmcKMDAxNmNpZCB0eXBlID0gYWNjZXNzCjAwMjFjaWQgbm9uY2UgPSBNYkgzZUcjUlhecGZoM0N2CjAwMmZzaWduYXR1cmUg_CZP7E7n0yrgIA4SBYdMYk1PV5aiAtyoK-VsQU2ARPIK";
-  constructor() {}
+
+  constructor(private formBuilder: FormBuilder) {
+    this.messageForm = this.formBuilder.group({
+      message: ['', Validators.required]
+    })
+  }
 
   ngOnInit() {
     this.client = sdk.createClient({
@@ -53,17 +59,16 @@ export class InboxComponent implements OnInit {
     }
 
   sendMessage() {
-      console.log("button clicked !");
-        // var content = {
-        //     "body": this.message,
-        //     "msgtype": "m.text"
-        // };
+        var content = {
+            "body": this.messageForm.controls.message.value,
+            "msgtype": "m.text"
+        };
 
-        // this.client.sendEvent(this.testRoomId, "m.room.message", content, "").then((res) => {
-        // // message sent successfully
-        // }).catch((err) => {
-        //     console.log(err);
-        // });
+        this.client.sendEvent(this.testRoomId, "m.room.message", content, "").then((res) => {
+        // message sent successfully
+        }).catch((err) => {
+            console.log(err);
+        });
   }
 
 }
