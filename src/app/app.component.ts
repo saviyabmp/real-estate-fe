@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { Router, NavigationStart } from '@angular/router';
+import { Router, NavigationStart, NavigationEnd } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
   title = 'real-estate-fe';
@@ -14,8 +14,8 @@ export class AppComponent {
   ngOnInit() {
   }
 
-  constructor(private router: Router) {
-    // on route change to '/login' and /registration, don't show header on page.
+  constructor(private router: Router, private location: Location) {
+
     router.events.forEach((event) => {
       if (event instanceof NavigationStart) {
           const url = event['url'];
@@ -26,7 +26,6 @@ export class AppComponent {
         } else {
           this.showHeaderComponenet = true;
         }
-      }
-    });
+    }})
   }
 }

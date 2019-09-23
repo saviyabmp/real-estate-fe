@@ -23,7 +23,8 @@ const routes: Routes = [
    { path: 'sell-land', component: LandSellerComponent ,canActivate: [AuthGuard]},
    { path: 'login', component: LoginComponent, data: { title: 'Login Page'}},
    { path: 'registration', component: RegistrationComponent, data: {title: 'Registration Page'}},
-   {path: '**', component: NotFoundComponent}
+   {path: '404', component: NotFoundComponent},
+   {path: '**', redirectTo: '/404'}
 ];
 
 @NgModule({
