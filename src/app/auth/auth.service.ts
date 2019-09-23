@@ -4,7 +4,6 @@ import {HttpHeaders} from '@angular/common/http';
 import { from, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { Register } from "../registration/registration-model";
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -40,8 +39,6 @@ export class AuthService {
             }
             return data;
         }));
-        //localStorage.setItem('currentUsertoken', "true");
-        console.log("Logged in");
         return newlyCreatedResponseObservable;
     }
 
@@ -49,16 +46,6 @@ export class AuthService {
         localStorage.removeItem('currentUsertoken');
         console.log("Logged out");
         this.router.navigateByUrl("/login");
-    }
-
-    createUser(register:Register) {
-        const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' })};
-        var request = {
-        "username": register.username,
-        "password": register.password,
-        }
-        console.log("this is " + JSON.stringify(request));
-        return this.http.post<Register[]>(this.Url + 'registration', request, httpOptions);
     }
 
     isAuthenticated(): boolean {

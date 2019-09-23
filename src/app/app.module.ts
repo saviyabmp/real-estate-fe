@@ -16,9 +16,9 @@ import { NavigationComponent } from './common/navigation/navigation.component';
 import { InboxComponent } from './pages/inbox/inbox.component';
 import { LandBuyerComponent } from './pages/land/land-buyer/land-buyer.component';
 import { LandSellerComponent } from './pages/land/land-seller/land-seller.component';
-import { LoginComponent } from './auth/login/login.component';
-import { RegistrationComponent } from './auth/registration/registration.component';
-import { AuthService } from './auth/service/auth.service';
+import { LoginComponent } from './pages/login/login.component';
+import { RegistrationComponent } from './pages/registration/registration.component';
+import { AuthService } from './auth/auth.service';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 @NgModule({

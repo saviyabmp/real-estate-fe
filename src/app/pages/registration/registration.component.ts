@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../service/auth.service';
-import {Register} from './registration-model';
+import {RegistrationModel} from './registration.model';
 import {Observable} from 'rxjs';
 import { NgForm, FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { RegistrationService } from './registration.service';
 
 @Component({
   selector: 'app-register',
@@ -13,28 +13,26 @@ export class RegistrationComponent implements OnInit {
   massage:string;
   registrationForm : FormGroup;
 
-  constructor(private formbulider: FormBuilder,private authService:AuthService) { }
+  constructor(private formbulider: FormBuilder, private registrationService:RegistrationService) { }
 
   ngOnInit() {
       this.registrationForm = this.formbulider.group({
+      name: ['', [Validators.required]],
       username: ['', [Validators.required]],
-      LoginName: ['', [Validators.required]],
+      email: ['', [Validators.required]],
       password: ['', [Validators.required]],
-      Email: ['', [Validators.required]],
-      ContactNo: ['', [Validators.required]],
-      Address: ['', [Validators.required]],
     }/*,{validator : someFunction() }*/);
   }
 
   onFormSubmit() {
-      console.log("methos formsub called");
-    const user = this.registrationForm.value;
-    this.createemployee(user);
+    console.log("methos formsub called");
+    const registration = this.registrationForm.value;
+    this.addNewRegistration(registration);
 
   }
 
-  createemployee(register: Register) {
-    this.authService.createUser(register).subscribe(
+  addNewRegistration (registration: RegistrationModel) {
+    this.registrationService.addNewRegistration(registration).subscribe(
         ()=>
         {
         this.data = true;
