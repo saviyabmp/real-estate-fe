@@ -5,6 +5,7 @@ import { from, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
+import { CurrentUserModel } from './current-user.model';
 
 @Injectable({
     providedIn: 'root'
@@ -32,10 +33,13 @@ export class AuthService {
             //This code block is called for every Json element (considered as a map element) in the response body.
             //In this case only once since the respnse has only one element( { "token" : "$jwt-token"} )
             data => {
-            console.log("Token is : " + data.token);
+
             if (data && data.token) {
-                localStorage.setItem('currentUsertoken', data.token);
-                console.log("Token stored : " + data.token);
+                const currentUser = new CurrentUserModel();
+                //currentUser.token = data.token;
+
+                localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                localStorage.setItem('currentUserToken', data.token);
             }
             return data;
         }));
@@ -43,14 +47,15 @@ export class AuthService {
     }
 
     logout() {
-        localStorage.removeItem('currentUsertoken');
+        localStorage.removeItem('currentUser');
+        localStorage.removeItem('currentUserToken');
         console.log("Logged out");
         this.router.navigateByUrl("/login");
     }
 
     isAuthenticated(): boolean {
-        const token = localStorage.getItem('currentUsertoken')
-        // Check whether the token is expired and return
+        const token = localStorage.getItem('currentUserToken')
+        // TODO! Check whether the token is expired and return
         // true or false
          if(token !== null)
             return true;//!this.jwtHelper.isTokenExpired(token);

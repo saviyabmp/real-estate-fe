@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtModule, JwtHelperService, JWT_OPTIONS } from "@auth0/angular-jwt";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -20,6 +20,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegistrationComponent } from './pages/registration/registration.component';
 import { AuthService } from './auth/auth.service';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { AuthInterceptor } from './auth/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,12 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
   providers: [
       AuthService,
       { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
-      JwtHelperService
+      JwtHelperService,
+      {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

@@ -4,5 +4,4 @@ export class CurrentUserModel {
     name : string;
     username : string;
     email : string;
-    token : string;
 }
