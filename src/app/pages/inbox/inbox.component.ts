@@ -4,8 +4,7 @@ import sdk from 'matrix-js-sdk';
 
 @Component({
   selector: 'app-inbox',
-  templateUrl: './inbox.component.html',
-  styleUrls: ['./inbox.component.scss']
+  templateUrl: './inbox.component.html'
 })
 export class InboxComponent implements OnInit {
 

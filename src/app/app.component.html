@@ -1,5 +1,5 @@
-<app-header></app-header>
-<app-navigation></app-navigation>
+<app-header *ngIf="showHeaderComponenet"></app-header>
+<app-navigation *ngIf="showHeaderComponenet"></app-navigation>
 
 <!-- margin is needed to prevent footer from covering up content -->
 <div class="container" style="margin-bottom: 60px;">
