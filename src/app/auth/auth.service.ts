@@ -5,7 +5,6 @@ import { from, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
-import { CurrentUserModel } from './current-user.model';
 
 @Injectable({
     providedIn: 'root'
@@ -28,22 +27,7 @@ export class AuthService {
         var a =this.Url+'authenticate';
         //return this.http.post<any>(this.Url+'authenticate',model,{ headers: this.header});
         const responseObservable : Observable<any> = this.http.post<any>(this.Url+'authenticate',model);
-
-        const newlyCreatedResponseObservable = responseObservable.pipe(map(
-            //This code block is called for every Json element (considered as a map element) in the response body.
-            //In this case only once since the respnse has only one element( { "token" : "$jwt-token"} )
-            data => {
-
-            if (data && data.token) {
-                const currentUser = new CurrentUserModel();
-                //currentUser.token = data.token;
-
-                localStorage.setItem('currentUser', JSON.stringify(currentUser));
-                localStorage.setItem('currentUserToken', data.token);
-            }
-            return data;
-        }));
-        return newlyCreatedResponseObservable;
+        return responseObservable;
     }
 
     logout() {

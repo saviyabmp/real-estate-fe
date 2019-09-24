@@ -17,8 +17,9 @@ export class RegistrationService {
     addNewRegistration( registrationModel : RegistrationModel) {
         const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' })};
         var request = {
-        "username": registrationModel.username,
-        "password": registrationModel.password,
+            "username": registrationModel.username,
+            "password": registrationModel.password,
+            "email" : registrationModel.email
         }
         console.log("this is " + JSON.stringify(request));
         return this.http.post<RegistrationModel[]>(this.Url + 'registration', request, httpOptions);

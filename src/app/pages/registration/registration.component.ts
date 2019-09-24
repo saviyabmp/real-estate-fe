@@ -17,7 +17,6 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit() {
       this.registrationForm = this.formbulider.group({
-      name: ['', [Validators.required]],
       username: ['', [Validators.required]],
       email: ['', [Validators.required]],
       password: ['', [Validators.required]],
