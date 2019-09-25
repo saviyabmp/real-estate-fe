@@ -25,6 +25,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   onFormSubmit() {
+    this.alertService.clearAlerts("registrationAlert");
     const registration = this.registrationForm.value;
     this.addNewRegistration(registration);
 
