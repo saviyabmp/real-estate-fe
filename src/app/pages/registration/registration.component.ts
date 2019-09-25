@@ -3,21 +3,21 @@ import {RegistrationModel} from './registration.model';
 import {Observable} from 'rxjs';
 import { NgForm, FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { RegistrationService } from './registration.service';
+import { AlertService } from 'src/app/common/alert/alert.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './registration.component.html'
 })
 export class RegistrationComponent implements OnInit {
-  data = false;
-  massage:string;
+
   registrationForm : FormGroup;
 
-  constructor(private formbulider: FormBuilder, private registrationService:RegistrationService) { }
+  constructor(private formbulider: FormBuilder, private registrationService:RegistrationService,
+                private alertService : AlertService) { }
 
   ngOnInit() {
       this.registrationForm = this.formbulider.group({
-      name: ['', [Validators.required]],
       username: ['', [Validators.required]],
       email: ['', [Validators.required]],
       password: ['', [Validators.required]],
@@ -25,7 +25,6 @@ export class RegistrationComponent implements OnInit {
   }
 
   onFormSubmit() {
-    console.log("methos formsub called");
     const registration = this.registrationForm.value;
     this.addNewRegistration(registration);
 
@@ -33,11 +32,13 @@ export class RegistrationComponent implements OnInit {
 
   addNewRegistration (registration: RegistrationModel) {
     this.registrationService.addNewRegistration(registration).subscribe(
-        ()=>
-        {
-        this.data = true;
-        this.massage = 'Data saved Successfully';
-        this.registrationForm.reset();
-        });
+        res => {
+            this.alertService.alertSuccess("registrationAlert","User registration successful !");
+            this.registrationForm.reset();
+        },
+        err => {
+            this.alertService.alertError("registrationAlert","User registration failed ! Error message : " + err.error.message);
+        }
+        );
   }
 }

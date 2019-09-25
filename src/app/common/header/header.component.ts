@@ -8,9 +8,11 @@ import { AuthService } from 'src/app/auth/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
+  public currentUser;
   constructor(public authService: AuthService) {}
 
   ngOnInit() {
+      this.currentUser = JSON.parse(localStorage.getItem("currentUser")).username;
   }
 
   isLoggedIn() : boolean {
