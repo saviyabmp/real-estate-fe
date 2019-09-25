@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../auth/auth.service';
 import { FormsModule } from '@angular/forms';
 import { CurrentUserModel } from 'src/app/auth/current-user.model';
+import { AlertService } from 'src/app/common/alert/alert.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent {
   model : any={};
 
   errorMessage:string;
-  constructor(private router:Router,private authService:AuthService) { }
+  constructor(private router:Router,private authService:AuthService, private alertService : AlertService) { }
 
 
   ngOnInit() {
@@ -27,6 +28,8 @@ export class LoginComponent {
   }
 
   loginAction(){
+      //To remove old alerts.
+    this.alertService.clearAlerts("loginAlert");
     this.authService.login(this.model).subscribe(
         res => {
             const currentUser = new CurrentUserModel();
@@ -38,7 +41,10 @@ export class LoginComponent {
             console.log('HTTP response', res);
             console.log('Current user model ', JSON.stringify(currentUser));
         },
-        err => console.log('HTTP Error', err),
+        err => {
+            console.log('HTTP Error', JSON.stringify(err));
+            this.alertService.alertError("loginAlert","Can't login ! Error message : " + err.error.message);
+        },
         () => {
             this.router.navigate(['/home']);
         }

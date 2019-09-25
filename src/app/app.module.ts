@@ -21,6 +21,7 @@ import { RegistrationComponent } from './pages/registration/registration.compone
 import { AuthService } from './auth/auth.service';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import { AlertComponent } from './common/alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     LandSellerComponent,
     LoginComponent,
     RegistrationComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
